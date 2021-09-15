@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <div class="container">
+        <h1 style="color:lightcoral"> Customer Bug Info</h>
+    </div>  
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BugInfo</title>
+
+    <script>
+        class BugInfo{
+            constructor(name, bug, type) {
+                this.name = name;
+                this.bug = bug;
+                this.type = type;
+            }
+        };
+
+        //p -> primium
+        //Np -> Non primimum        
+
+        var customers = [];
+
+        // add the Bug data in map using customer id
+        function addBugInfo(){
+            var name = document.getElementById('name').value;
+            var bug = document.getElementById('BI').value;
+            var type = document.getElementById('type').value;
+
+            customers.push(new BugInfo(name, bug, type));
+            console.log(customers);
+            show();
+        }
+
+        function show(){
+          document.getElementById("data").innerHTML="";
+            for(var i=0;i<customers.length;i++)
+            {
+              document.getElementById("data").innerHTML += `<hr  color:"pink"><ul><li>Name : ${customers[i].name}</li><li>Bug : ${customers[i].bug}</li><li>Type : ${customers[i].type}</li></ul>
+                <button type="button" style="color:red" onclick="DeleteCustomer(${i})" >DELETE</button>`;
+            }
+        }
+
+        function DeleteCustomer(i) {
+          customers.splice(i, 1);
+          show();
+        }
+        
+    </script>
+
+</head>
+<body >          
+    <form action="/"></form>
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" value="Aditya"><br>
+
+        <label for="lname">Bug Description</label><br>
+        <input type="text" id="BI" name="BI" value="1A"><br><br>
+
+        <label for="lname">Type</label><br>
+        <input type="text" id="type" name="type" value="NP"><br><br>
+
+        <input type="submit" value="Submit" onclick="addBugInfo()">
+    </form> 
+
+    <h2 id="data"></h2>
+  </body>
+</html>
+
+
+
